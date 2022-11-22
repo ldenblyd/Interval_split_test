@@ -1,12 +1,10 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { getPeriodsToInject, getPeriodsToRemplace } from "../lib/utils";
 import { Period } from "../types/Periods";
 import IntervalSplitForm from "./intervalSplitForm";
 
-export default function IntervalSplit(props: any) {
-  const [periods, setPeriods] = useState<Period[]>([
-    { start: 0, end: 100 },
-  ]);
+export default function IntervalSplit() {
+  const [periods, setPeriods] = useState<Period[]>([{ start: 0, end: 100 }]);
 
   const replacePeriod = (
     replaceFromIndex: number,
