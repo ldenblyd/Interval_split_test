@@ -1,6 +1,6 @@
 import { Period } from "../types/Periods";
 
-export function getPeriodsToInject(
+export function getPeriodToInject(
   periodToInject: Period,
   globalPeriod: Period
 ): Period[] {
@@ -28,7 +28,7 @@ export function getPeriodsToInject(
   return periodsToInject;
 }
 
-export function getPeriodsToRemplace(
+export function getPeriodToReplaceIndexes(
   periodToInject: Period,
   periods: Period[]
 ) {

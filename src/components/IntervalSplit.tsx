@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getPeriodsToInject, getPeriodsToRemplace } from "../lib/utils";
+import { getPeriodToInject, getPeriodToReplaceIndexes } from "../lib/utils";
 import { Period } from "../types/Periods";
 import IntervalSplitForm from "./intervalSplitForm";
 
@@ -11,10 +11,12 @@ export default function IntervalSplit() {
     replaceToIndex: number,
     periodToInject: Period
   ) => {
-    const periodsToInject = getPeriodsToInject(periodToInject, {
+    const globalPeriod = {
       start: periods[replaceFromIndex].start,
       end: periods[replaceToIndex].end,
-    });
+    };
+
+    const periodsToInject = getPeriodToInject(periodToInject, globalPeriod);
 
     setPeriods([
       ...periods.slice(0, replaceFromIndex),
@@ -24,7 +26,7 @@ export default function IntervalSplit() {
   };
 
   const split = (periodToInject: Period) => {
-    const { replaceFrom, replaceTo } = getPeriodsToRemplace(
+    const { replaceFrom, replaceTo } = getPeriodToReplaceIndexes(
       periodToInject,
       periods
     );
